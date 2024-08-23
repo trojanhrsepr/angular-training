@@ -1,0 +1,39 @@
+<h2> Product {{product.name}} </h2>
+
+<!-- 
+     #productName="ngModel"   productName is instance of ng Model directive
+
+-->
+
+<p *ngIf="productForm.invalid">
+    Wrong form data
+</p>
+
+<p *ngIf="productForm.dirty">
+    From is unsaved.. Save the form
+</p>
+
+<form (ngSubmit)="save()"  #productForm="ngForm" >
+    Name 
+    <input [(ngModel)]="product.name" type="text" name="name"
+            required
+            minlength="3"
+
+            #productName="ngModel"
+    />
+    <p *ngIf="productName.invalid">
+        Enter right product name
+    </p>
+
+    Price
+    <input [(ngModel)]="product.price" type="number" name="price" />
+
+    Model 
+    <select [(ngModel)]="product.brandId" name="brandId" >
+        <option *ngFor="let brand of brands$ | async" [value]="brand.id">
+            {{brand.name}}
+        </option>
+    </select>
+
+    <button type="submit" [disabled]="productForm.invalid" > Save </button>
+</form>

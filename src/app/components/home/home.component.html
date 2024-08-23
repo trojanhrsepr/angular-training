@@ -1,0 +1,26 @@
+<h2>Home</h2>
+
+
+<button (click)="incr()"> +Qty </button>
+<p> Price {{price | currency:'INR' }} </p>
+<p> Price {{price | currency:'EUR' }} </p>
+
+<p> Price {{price }} </p>
+
+<!-- fix me: number formatting -->
+<p> Price {{price | number:'0.3' }} </p>
+
+<p> Product {{title | uppercase}}</p>
+<p> Product {{title | lowercase}}</p>
+<p> Date {{today}} </p>
+<p> Date {{today | date}} </p>
+<p> Date {{today | date:'dd/MM/yyyy' }}</p>
+
+
+<p>Home Page Likes {{homeLikes}} </p>
+<app-like [(likes)]="homeLikes">
+</app-like>
+
+
+<app-counter >
+</app-counter>

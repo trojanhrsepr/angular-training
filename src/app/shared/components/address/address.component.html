@@ -1,0 +1,12 @@
+<div>
+    <!-- to display the content children, use ng-content -->
+    <ng-content>
+    </ng-content>
+    
+    <span>City: {{address.city}}</span>&nbsp;
+    <span>State: {{address.state}}</span>&nbsp;
+    <span>Pincode: {{address.pincode}}</span>&nbsp;
+    <p>Phone: {{phone}}</p>
+
+    <button (click)="contactUs()"> Contact </button>
+</div>

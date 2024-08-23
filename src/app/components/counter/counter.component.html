@@ -1,0 +1,117 @@
+<h4>Counter</h4>
+
+<!--
+    {{expr}} -- interpolation, eval the expression, 
+                               convert the result to string
+    [] - Property Binding - one way binding, model to view
+                            - Eval the expression, maintain the data type as it is
+    () - Event Binding - update changes on view to model
+
+    [()] - two way binding
+
+    # - Template Reference Variable, 
+        available/accessible only within this template
+
+    ?. - Elvis Operator null/undefined check
+-->
+
+
+<p> Counter ^ 2 = {{counter | power:2 }} </p> 
+<p> 5 ^ counter = {{5 | power:counter }} </p> 
+<p> 5 ^ counter | currency = {{5 | power:counter | currency:'INR' }} </p> 
+
+
+<p> Counter {{counter}}</p>
+<p> Counter + 1  = {{counter + 1}} </p>
+
+<input [value]="counter"  type="number" />
+<input [value]="counter + 1" />
+
+<button (click)="increment()">
+    +1
+</button>
+
+<button (click)="counter = counter - 1">
+    -1
+</button>
+
+<button [disabled]="counter % 2 == 0? true: false">
+    My Button 
+</button>
+
+<div  [ngClass]="{ highlight: isMouseOn, forecolor: true  }" 
+      (mouseenter)="isMouseOn = true"
+      (mouseleave)="isMouseOn = false"
+>
+    <p> Mouse Over here </p>
+</div>
+
+<div (click)="myDivClick($event)">
+    <p>Div Bubble Test</p>
+
+    <button (click)="myBtnClick($event)">
+            Bubble Test
+    </button>
+</div>
+
+<!-- 
+    Directive 
+        -- Cross cutting concerns
+
+    Component
+        -- View/Template
+        -- html tag
+
+    ngClass - Atribute Directive
+                it manipulate class attribute
+    *ngIf - * Structural Directive
+                manipulate DOM ELEMENTs/add/remove dom elements
+
+        
+
+-->
+
+<p *ngIf="counter % 2 == 1 else evenPart">
+    Odd
+</p>
+
+
+<ng-template #evenPart>
+    <p>This is Even Number </p>
+</ng-template>
+
+<!-- check if address is defined/undefined, then only look up the city -->
+<p >
+   City:  {{address?.city}}
+</p>
+
+
+<!-- [(ngModel)] - attribute directive / value attribute
+    Any changes to model pushed to view
+    any update on view pushed to model
+-->
+
+<p>Two Way Binding </p>
+<input [(ngModel)]="counter" type="number" />
+
+<!--
+    [()] - Property + Event Binding
+-->
+
+<input [ngModel]="counter" 
+       (ngModelChange)="counter = $event"
+type="number" />
+
+
+<!-- alternative  [] is converted to bind- -->
+
+<p> with bind </p>
+
+<input bind-value="counter" />
+
+<!-- () for event, can be used wiht on- -->
+
+<button on-click="counter = counter + 2"> 
+    +2
+</button>
+

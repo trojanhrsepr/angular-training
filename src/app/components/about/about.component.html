@@ -1,0 +1,24 @@
+<h2>About</h2>
+
+<!-- 
+    # - template reference variable
+            -- dom access
+            -- ViewChild (in TS/Component)
+
+    para1 - is a reference to DOM element p
+-->
+
+<p #para1></p>
+
+<button  appHighlight color="lightgreen" 
+        (click)="para1.textContent='Hello' ">
+    Set Text 
+</button>
+
+<input #firstName appHighlight color="yellow" />
+
+<button (click)="para1.textContent = firstName.value">
+    Set Value
+</button>
+
+<!-- add lastName as ViewChild -->

@@ -1,0 +1,29 @@
+<h2 appHighlight>Contact</h2>
+
+
+<!--
+    contact is parent component, address is child component
+    parent can pass data to child using property binding []
+
+
+    child to parent communication works as event ()
+    child component emit event, the values canbe passed as $event
+    parent component to subscribe and handle the event
+
+-->
+ 
+<app-address [address]="headOffice" 
+             [phone]="100 + 5"
+             (contactEvent)="handleContactEvent($event)"
+             
+             >
+    <!-- content children -->
+    <h4>Head Office</h4>
+</app-address>
+
+<app-address [address]="branchOffice" 
+             phone="91333333333"
+             (contactEvent)="handleContactEvent($event)"
+             >
+    <h4>Branch Office</h4>
+</app-address>
